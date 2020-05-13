@@ -20,7 +20,7 @@ Records cannot be used as `@Embeddable`/`@Embedded`/`@EmbeddedId` as they don't 
 
 Single-valued records could be used as attributes but require a standard JPA `AttributeConverter`.
 
-Multi-valued records could be used as attributes but require a vendor-specific adapter (like Hibernate `UserType`) as standard `AttributeConverter`s  do not support multiple columns.
+Multi-valued records could be used as attributes but require a vendor-specific adapter (like Hibernate `UserType`) as standard `AttributeConverter`s [do not support multiple columns](https://github.com/eclipse-ee4j/jpa-api/issues/105).
 
 ## Records used as entities
 
