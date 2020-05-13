@@ -16,6 +16,22 @@ Projections seem to be supported without any modification to existing JPA provid
 
 Records cannot be used as `@Embeddable`/`@Embedded`/`@EmbeddedId` as they don't define a default constructor. Hibernate won't even persist them.
 
+It would be really nice if a records could be used and annotated like any other embeddable object:
+
+    @Embeddable
+    public record Fraction(@Basic(optional = false) BigInteger numerator, @Basic(optional = false) BigInteger denominator) {}
+    
+Alternatively, the record could be declared in orm.xml:
+
+    <entity-mappings xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" version="2.1">
+        <embeddable class="com.mycompany.Fraction">
+            <attributes>
+                <basic name="numerator" optional="false" />
+                <basic name="denominator" optional="false" />
+            </attributes>
+        </embeddable>
+    </entity-mappings>
+
 ### With AttributeConverter
 
 Single-valued records could be used as attributes but require a standard JPA `AttributeConverter`.
