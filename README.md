@@ -6,7 +6,7 @@ This small project tests what is currently possible wrt using records with JPA. 
 
 ## Records used as projections
 
-Projections seem to work without any modification to existing JPA providers.
+Projections seem to be supported without any modification to existing JPA providers.
 
     select new my.company.MyRecord(e.x, sum(e.y)) from MyEntity e
     
@@ -14,7 +14,7 @@ Projections seem to work without any modification to existing JPA providers.
 
 ### @Embeddable/@Embedded records
 
-Records cannot be used as `@Embeddable`/`@Embedded` as they don't define a default constructor. Hibernate won't even persist them.
+Records cannot be used as `@Embeddable`/`@Embedded`/`@EmbeddedId` as they don't define a default constructor. Hibernate won't even persist them.
 
 ### With AttributeConverter
 
@@ -32,4 +32,7 @@ Question: What if an immutable record entity contains mutable attributes? Won't 
 
 The biggest problem for JPA providers seems to be that records do not have a default constructor.
 If JPA providers could add some flexibility in how objects are instantiated/initialized, records could easily be supported.
-Supporting initialization through non-default constructors could also be beneficial for Object-Oriented Design: entities could have a single constructor and fields could be made final.
+Supporting initialization through non-default constructors could also be beneficial for Object-Oriented Design: entities could have a single constructor and fields could be made final (JPA could even infer that `@Column.updatable = false` for final fields).
+Some inspiration could be found from JSON-B which allows non-default constructors to be used (see `@JsonbCreator`).
+
+Another track to keep an eye on is the (potential) new [serialization mechanism](https://cr.openjdk.java.net/~briangoetz/amber/serialization.html) which would allow better/easier state extraction and object creation from that state.  
