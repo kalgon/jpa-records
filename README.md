@@ -18,9 +18,9 @@ Records cannot be used as `@Embeddable`/`@Embedded` as they don't define a defau
 
 ### With AttributeConverter
 
-Single-valued records could be used as attributes but require a specific standard JPA `AttributeConverter`.
+Single-valued records could be used as attributes but require a standard JPA `AttributeConverter`.
 
-Multi-valued records could be used as attributes but require a specific vendor-specific adapter (like Hibernate `UserType`) as standard `AttributeConverter`s  do not support multiple columns.
+Multi-valued records could be used as attributes but require a vendor-specific adapter (like Hibernate `UserType`) as standard `AttributeConverter`s  do not support multiple columns.
 
 ### Entities
 
