@@ -24,7 +24,8 @@ Multi-valued records could be used as attributes but require a vendor-specific a
 
 ## Records used as entities
 
-Records cannot be used as (immutable) `@Entity` as they don't define a default constructor: they can be persisted but not read back.
+Records cannot be used as `@Entity` as they don't define a default constructor: they can be persisted but not read back.
+Using records as entities implies that those entities are immutable: identifiers cannot be generated (`@GeneratedValue`) and must be passed in the constructor.
 
 Question: What if an immutable record entity contains mutable attributes? Won't `hashCode()`/`equals()` be impacted?
 
