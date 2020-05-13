@@ -8,7 +8,7 @@ This small project tests what is currently possible wrt using records with JPA. 
 
 Projections seem to be supported without any modification to existing JPA providers.
 
-    select new my.company.MyRecord(e.x, sum(e.y)) from MyEntity e
+    select new my.company.MyRecord(e.x, sum(c.y)) from MyEntity e join e.children c
     
 ## Records used as attributes
 
