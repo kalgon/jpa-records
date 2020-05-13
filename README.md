@@ -22,7 +22,7 @@ Single-valued records could be used as attributes but require a standard JPA `At
 
 Multi-valued records could be used as attributes but require a vendor-specific adapter (like Hibernate `UserType`) as standard `AttributeConverter`s  do not support multiple columns.
 
-### Entities
+## Records used as entities
 
 Records cannot be used as (immutable) `@Entity` as they don't define a default constructor: they can be persisted but not read back.
 
