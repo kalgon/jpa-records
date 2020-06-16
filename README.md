@@ -6,9 +6,15 @@ This small project tests what is currently possible wrt using records with JPA. 
 
 ## Records used as projections
 
+### Inside queries
+
 Projections seem to be supported without any modification to existing JPA providers.
 
     select new my.company.MyRecord(e.x, sum(c.y)) from MyEntity e join e.children c
+    
+### Outside queries
+
+If in-query projections are not powerful enough, they can be done outside of the query in standard java code or by using a library ([mapstruct](https://github.com/mapstruct/mapstruct/issues/2014), beanutils, dozer...).
     
 ## Records used as attributes
 
